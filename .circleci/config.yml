@@ -1,0 +1,27 @@
+version: 2.1
+
+
+jobs:  
+  build-and-test:    
+    build: # name of your job
+    machine: # executor type
+      image: ubuntu-2004:202010-01
+    steps:   
+      - checkout       
+      - run:
+          name: Install Dependencies 
+          command: pip3 install -r requirnments.txt
+      - run:
+          name: "Start Service and Check That it’s Running"
+          command: |
+            docker run -d --name myapi sreedocker123/govstackmccapitestcircleci:second
+            docker exec myapi curl --retry 10 --retry-connrefused http://myapi:8080/home/ 
+workflows:  
+  build-test-and-deploy:    
+    jobs:
+      - build-and-test:
+          filters:            
+            branches:
+              only:
+                - master
+        
