@@ -12,7 +12,7 @@ jobs:
           name: Install Dependencies 
           command: pip3 install -r requirnments.txt
       - run:
-          name: "Start Service and Check That it’s Running"
+          name: " Service and Check That it’s Running"
           command: |
             docker run -d --name myapi sreedocker123/govstackmccapitestcircleci:latest
             docker exec myapi curl --retry 10 --retry-connrefused http://myapi:8080/home/ 
