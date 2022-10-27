@@ -17,7 +17,7 @@ jobs:
           name: Test API Integration Scripts using Gherkhin and Pytest-BDD
           command: |
             
-            docker ps
+            docker exec -it project_db_1 curl http://project_wordpress_1:80
             
 workflows:  
   build-test-and-deploy:    
