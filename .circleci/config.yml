@@ -18,7 +18,7 @@ jobs:
           name: Test API Integration Scripts using Gherkhin and Pytest-BDD
           command: |
             docker exec -it myapi ls /app 
-            docker exec myapi curl --retry 10 --retry-connrefused http://localhost:8080/home/
+            docker exec myapi curl --retry 10 --retry-connrefused http://localhost:8000/home/
 workflows:  
   build-test-and-deploy:    
     jobs:
