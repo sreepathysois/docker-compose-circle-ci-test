@@ -19,7 +19,8 @@ jobs:
           name: Test API Integration Scripts using Gherkhin and Pytest-BDD
           command: |
             
-            docker run --network cmwd-net -i -t alpine:3.7 apk add --no-cache curl && curl http://myapi:8000/home
+            docker run --network cmwd-net  --name test -i -t alpine:3.7 apk add --no-cache curl 
+            docker exec -it test --entrypoint /bin/sh curl http://myapi:8000/home/
 workflows:  
   build-test-and-deploy:    
     jobs:
