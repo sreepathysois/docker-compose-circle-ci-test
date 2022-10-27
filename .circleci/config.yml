@@ -17,7 +17,7 @@ jobs:
           name: Test API Integration Scripts using Gherkhin and Pytest-BDD
           command: |
             docker ps
-            docker exec -it db curl --retry 10  http://wordpress:80
+            docker exec -it db curl --retry 10 --connect-timeout 30 --retry-delay 5  http://wordpress:80
             
 workflows:  
   build-test-and-deploy:    
