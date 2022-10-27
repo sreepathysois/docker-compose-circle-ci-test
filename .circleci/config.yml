@@ -8,9 +8,7 @@ jobs:
       image: ubuntu-2004:202010-01
     steps:   
       - checkout       
-      - run:
-          name: Install Dependencies 
-          command: pip3 install -r requirnments.txt
+  
       - run:
           name: "Start Service and Check That it’s Running"
           command: |
