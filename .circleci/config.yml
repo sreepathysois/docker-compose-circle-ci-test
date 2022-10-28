@@ -10,14 +10,19 @@ jobs:
       - checkout       
   
       - run:
-          name: "Start Service and Check That it’s Running"
+          name: "Start Services using Docker-Compose"
           command: |
            docker-compose up -d
       - run:
-          name: Test API Integration Scripts using Gherkhin and Pytest-BDD
+          name: "Check That it’s Running"
           command: |
-            docker ps
-            docker exec -it db curl --retry 10 --connect-timeout 30 --retry-delay 5  http://wordpress:80
+           docker ps
+
+      - run:
+          name: "Test Containers are Accesisable to Check Port Accesibality"
+          command: docker exec -it db curl --retry 10 --connect-timeout 30 --retry-delay 5  http://wordpress:80
+            
+            
             
 workflows:  
   build-test-and-deploy:    
